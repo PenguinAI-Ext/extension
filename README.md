@@ -1,0 +1,2 @@
+# extension
+PenguinAI Extension
