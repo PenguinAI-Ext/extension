@@ -30,6 +30,11 @@
             this.fetchAndGetReqModels().then(models => {
                 this.reqModels = models
             });
+            this.imgModels = [{text:'Currently requesting models please wait!', value: 'anything-v5'}];
+            this.imgModelsErrored = false;
+            this.fetchAndGetImgModels().then(models => {
+                this.imgModels = models
+            });
             this.nextJSON = null;
         }
 
@@ -317,39 +322,7 @@
                     },
                     igModels: {
                         acceptReporters: true,
-                        items: [
-                        {
-                            text: "DALL-E 3",
-                            value: "dall-e-3"
-                        }, 
-                        {
-                            text: "Dreamshaper 8",
-                            value: "dreamshaper-8"
-                        },
-                        {
-                            text: "OpenJourney V4",
-                            value: "openjourney-v4"
-                        },
-                        {
-                            text: "I can't believe it's not a photograph",
-                            value: "i-cant-believe-its-not-photography-seco"
-                        },
-                        {
-                            text: "Am i Real V4.1",
-                            value: "am-i-real-v4.1"
-                        },
-                        {
-                            text: "Pastel Mix Anime",
-                            value: "pastel-mix-anime"
-                        },
-                        {
-                            text: "Anything V5",
-                            value: "anything-v5"
-                        },
-                        {
-                            text: "Realistic Vision V5",
-                            value: "realistic-vision-v5"
-                        }]
+                        items: 'fetchAndGetImgModelsTemp'
                     },
                     reqModels: {
                         acceptReporters: true,
@@ -396,6 +369,36 @@
                        models.push({ text: this.formatModelId(model.id), value: model.id })
                    });
                    this.reqModelsErrored = false;
+                   return models;
+                })
+        }
+
+        fetchAndGetImgModelsTemp() {
+          if (this.imgModelsErrored) {
+            this.fetchAndGetImgModels().then(models => {
+                this.imgModels = models
+            });
+          }
+          return this.imgModels;
+        }
+        
+        fetchAndGetImgModels() {
+            return fetch(api_url + '/models')
+                .then(response => {
+                    if (!response.ok) {
+                        this.imgModelsErrored = true;
+                        console.error(`Network response was not ok: ${response.status} ${response.statusText}`);
+                        return [{ text: "The API seems to be down. Try again later.", value: "not-a-model" }];
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                   let models = [];
+                   data.data.forEach(model => {
+                       if (model.type != "images.generations") return;
+                       models.push({ text: this.formatModelId(model.id), value: model.id })
+                   });
+                   this.imgModelsErrored = false;
                    return models;
                 })
         }
