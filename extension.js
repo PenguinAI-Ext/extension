@@ -71,23 +71,23 @@ class PenguinGPT {
                 {
                     opcode: "__NOUSEOPCODE",
                     blockType: Scratch.BlockType.LABEL,
-                    text: "Reverse Proxy API Blocks",
+                    text: "reverse Proxy API Blocks",
                 },
                 {
                     opcode: 'setApiUrl',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'Set reverse proxy API Base URL to [URL]',
+                    text: 'set Reverse Proxy API URL to [URL]',
                     arguments: {
                         URL: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: api_url
                         }
-                        },
                     },
-                    {
+                },
+                {
                         opcode: 'setModel',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Set Model to [MODEL]',
+                        text: 'set Model to [MODEL]',
                         arguments: {
                             MODEL: {
                                 type: Scratch.ArgumentType.STRING,
@@ -99,18 +99,18 @@ class PenguinGPT {
                     {
                         opcode: 'getModel',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'Get current model'
+                        text: 'get current model'
                     },
                     {
                         opcode: 'checkApiUrl',
                         blockType: Scratch.BlockType.BOOLEAN,
-                        text: 'Is reverse proxy working?',
+                        text: 'is the Reverse Proxy working?',
                         disableMonitor: true,
                     },
                     {
                         opcode: 'checkModel',
                         blockType: Scratch.BlockType.BOOLEAN,
-                        text: 'Is model [MODEL] working?',
+                        text: 'is model [MODEL] working?',
                         arguments: {
                             MODEL: {
                                 type: Scratch.ArgumentType.STRING,
@@ -119,14 +119,13 @@ class PenguinGPT {
                         },
                     },
                     {
-                        opcode: "__NOUSEOPCODE",
                         blockType: Scratch.BlockType.LABEL,
                         text: "Message Management",
                     },
                     {
                         opcode: 'getPrompt',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'Get prompt [TYPE]',
+                        text: 'get prompt [TYPE]',
                         arguments: {
                             TYPE: {
                                 type: Scratch.ArgumentType.STRING,
@@ -138,7 +137,7 @@ class PenguinGPT {
                     {
                         opcode: 'singlePrompt',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'Generate from text (No Context): [PROMPT]',
+                        text: 'generate from text (no context): [PROMPT]',
                         arguments: {
                             PROMPT: {
                                 type: Scratch.ArgumentType.STRING,
@@ -149,7 +148,7 @@ class PenguinGPT {
                     {
                         opcode: 'advancedPrompt',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'Send text [PROMPT] to [chatID]',
+                        text: 'send text [PROMPT] to [chatID]',
                         arguments: {
                             PROMPT: {
                                 type: Scratch.ArgumentType.STRING,
@@ -164,7 +163,7 @@ class PenguinGPT {
                     {
                         opcode: 'addImageToNextRequest',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Attach Image [URL] to next message',
+                        text: 'attach image [URL] to next message',
                         arguments: {
                             URL: {
                                 type: Scratch.ArgumentType.STRING,
@@ -175,7 +174,7 @@ class PenguinGPT {
                     {
                         opcode: 'informChat',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Inform [chatID] that [inform]',
+                        text: 'inform [chatID] that [inform]',
                         arguments: {
                             chatID: {
                                 type: Scratch.ArgumentType.STRING,
@@ -188,14 +187,13 @@ class PenguinGPT {
                         },
                     },
                     {
-                        opcode: "__NOUSEOPCODE",
                         blockType: Scratch.BlockType.LABEL,
                         text: "Chatbot Management",
                     },
                     {
                         opcode: 'createChat',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Create chatbot named [chatID]',
+                        text: 'create chatbot named [chatID]',
                         arguments: {
                             chatID: {
                                 type: Scratch.ArgumentType.STRING,
@@ -206,7 +204,7 @@ class PenguinGPT {
                     {
                         opcode: 'removeChat',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Delete chatbot [chatID]',
+                        text: 'delete chatbot [chatID]',
                         arguments: {
                             chatID: {
                                 type: Scratch.ArgumentType.STRING,
@@ -217,7 +215,7 @@ class PenguinGPT {
                     {
                         opcode: 'resetChat',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Reset chat history of [chatID]',
+                        text: 'reset chat history of [chatID]',
                         arguments: {
                             chatID: {
                                 type: Scratch.ArgumentType.STRING,
@@ -228,7 +226,7 @@ class PenguinGPT {
                     {
                         opcode: 'exportChat',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'Chat history of [chatID] as Array',
+                        text: 'chat history of [chatID] as Array',
                         arguments: {
                             chatID: {
                                 type: Scratch.ArgumentType.STRING,
@@ -240,7 +238,7 @@ class PenguinGPT {
                     {
                         opcode: 'importChat',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Import chat history from [json] as [chatID]',
+                        text: 'import chat history from [json] as [chatID]',
                         arguments: {
                             json: {
                                 type: Scratch.ArgumentType.STRING,
@@ -270,22 +268,21 @@ class PenguinGPT {
                     {
                         opcode: 'exportAll',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'All chats as Arrays',
+                        text: 'all chats as Arrays',
                     },
                     {
                         opcode: 'listChats',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'Currently Active chats'
+                        text: 'currently active chats'
                     },
                     {
-                        opcode: "__NOUSEOPCODE",
                         blockType: Scratch.BlockType.LABEL,
                         text: "Image Generation",
                     },
                     {
                         opcode: 'generateImage',
                         blockType: Scratch.BlockType.REPORTER,
-                        text: 'Generate [PROMPT] from [MODEL] and get Response',
+                        text: 'generate [PROMPT] from [MODEL] and get URL',
                         arguments: {
                             PROMPT: {
                                 type: Scratch.ArgumentType.STRING,
@@ -301,7 +298,7 @@ class PenguinGPT {
                     {
                         opcode: 'generateImageAndImport',
                         blockType: Scratch.BlockType.COMMAND,
-                        text: 'Generate [PROMPT] from [MODEL] and import as costume with name [NAME]',
+                        text: 'generate [PROMPT] from [MODEL] and import as costume with name [NAME]',
                         arguments: {
                             PROMPT: {
                                 type: Scratch.ArgumentType.STRING,
@@ -446,7 +443,7 @@ class PenguinGPT {
         }
 
         setModel(args) {
-            this.model = args.MODEL
+            this.model = args.MODEL;
         }
         
         getModel() {
@@ -454,9 +451,7 @@ class PenguinGPT {
         }
 
         setApiUrl(args) {
-            const newApiUrl = args.URL;
-            // Update the api_url variable
-            api_url = newApiUrl;
+            api_url = Scratch.Cast.toString(args.URL).replace(/\/+$/, '');
         }
 
         checkApiUrl() {
@@ -482,7 +477,6 @@ class PenguinGPT {
                     return response.text();
                 })
                 .then(data => {
-                    
                     return data.trim() === "True";
                 })
                 .catch(error => {
