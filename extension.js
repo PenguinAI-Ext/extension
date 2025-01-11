@@ -24,7 +24,7 @@ if (!Scratch.extensions.unsandboxed) {
     throw new Error('"PenguinAI" cannot run unsandboxed.');
 }
 
-let api_url = 'https://penguinai.abby.is-a.dev/v1';
+let api_url = 'https://api.penguinai.tech/v1';
 
 fetch('https://mubilop.tech/proxy')
     .then(response => {
