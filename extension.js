@@ -47,6 +47,7 @@ class PenguinGPT {
     constructor() { // thank u Ashime for helping me here!!!
         this.chatHistories = {};
         this.model = "gpt-4o";
+        this.temperature = 1;
         this.reqModels = [{ text: 'Currently requesting models please wait!', value: 'gpt-3.5-turbo' }];
         this.reqModelsErrored = false;
         this.fetchAndGetReqModels().then(models => {
@@ -81,6 +82,17 @@ class PenguinGPT {
                         URL: {
                             type: Scratch.ArgumentType.STRING,
                             defaultValue: api_url
+                        }
+                    },
+                },
+                {
+                    opcode: 'setTemperature',
+                    blockType: Scratch.BlockType.COMMAND,
+                    text: 'set Temperature to [TEMPERATURE]',
+                    arguments: {
+                        TEMPERATURE: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: 1
                         }
                     },
                 },
@@ -445,6 +457,10 @@ class PenguinGPT {
         setModel(args) {
             this.model = args.MODEL;
         }
+
+        setTemperature(args) {
+            this.temperature = args.TEMPERATURE;
+        }
         
         getModel() {
             return this.model;
@@ -508,6 +524,7 @@ class PenguinGPT {
                     },
                     body: JSON.stringify({
                         model: this.model,
+                        temperature: this.temperature,
                         messages: [{
                             role: "user",
                             content
@@ -714,6 +731,7 @@ class PenguinGPT {
                     },
                     body: JSON.stringify({
                         model: this.model,
+                        temperature: this.temperature,
                         messages: chatHistory
                     }),
                 })
