@@ -24,9 +24,9 @@ if (!Scratch.extensions.unsandboxed) {
     throw new Error('"PenguinAI" cannot run unsandboxed.');
 }
 
-let api_url = 'https://api.penguinai.tech/v1';
+let api_url = 'https://ai.aerioncloud.com/v1';
 
-fetch('https://mubilop.tech/proxy')
+Scratch.fetch('https://mubilop.tech/proxy')
     .then(response => {
         if (!response.ok) {
             throw new Error(`Failed to fetch proxy URL: ${response.status} ${response.statusText}`);
@@ -396,7 +396,7 @@ class PenguinGPT {
         }
         
         fetchAndGetReqModels() {
-            return fetch(api_url + '/models')
+            return Scratch.fetch(api_url + '/models')
                 .then(response => {
                     if (!response.ok) {
                         this.reqModelsErrored = true;
@@ -426,7 +426,7 @@ class PenguinGPT {
         }
         
         fetchAndGetImgModels() {
-            return fetch(api_url + '/models')
+            return Scratch.fetch(api_url + '/models')
                 .then(response => {
                     if (!response.ok) {
                         this.imgModelsErrored = true;
