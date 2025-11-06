@@ -86,6 +86,17 @@
                 color1: '#009CCC',
                 docsURI: "https://extensions.penguinmod.com/docs/PenguinAI",
                 blocks: [{
+                        blockType: BlockType.LABEL,
+                        text: "PenguinAI is deprecated."
+                    },
+                    {
+                        func: "showWarning",
+                        text: "More information",
+                        blockType: BlockType.BUTTON,
+                    },
+                    "---",
+                    "---",
+                    {
                         opcode: "__NOUSEOPCODE",
                         blockType: BlockType.LABEL,
                         text: "Simple Blocks (For Beginners)",
@@ -944,6 +955,9 @@
             return formattedModelId;
         }
 
+        showWarning() {
+            alert("PenguinAI is now deprecated and has been removed from the PenguinMod Extension Gallery. This is for a couple of reasons, but mostly due to the lack of maintenance. If this extension is present in another extension gallery, please contact the owner. For more information, please see this github issue: https://github.com/PenguinMod/PenguinMod-Home/issues/421")
+        }
     }
     Scratch.extensions.register(new PenguinGPT());
 })(Scratch);
